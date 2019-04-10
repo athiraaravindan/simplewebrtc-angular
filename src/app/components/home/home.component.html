@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+        <div class="col-md-6">
+          <video id="localVideo"></video>
+        </div>
+        <div class="col-md-6">
+          <div class="chatmsg" id="chatopen">
+            <span class="chat_head">Chat</span>
+            <span class="close">
+              <i class="fa fa-times" aria-hidden="true" (click)="chatClose()"></i>
+            </span> 
+            <div id="messages">
+            <!-- <ul>
+              <li *ngFor="let message of messages">
+                {{message}}
+              </li>
+            </ul> -->
+            </div>
+            <input type="text" id="text">
+            <span class="send" (click)="sendMsg()">
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            </span>
+            <!-- <button (click)="sendMsg()" class="send">send</button> -->
+          </div>
+          <!-- <app-chat  *ngIf="loadChild"></app-chat> -->
+          <!-- <p>second col</p> -->
+          <!-- <div id="remoteVideos"></div> -->
+      </div>
+  </div>
+  <!-- <div class="row"> -->
+    <span id="remoteVideos"></span>
+    
+  <!-- </div> -->
+  <div class="row button_row" id="pannel_row">
+    <div class="col-sm-12">
+      <div class="forvideoicon">
+        <span class="video">
+            <i *ngIf="!video_play"  class="fas fa-video" title="video pause"
+            (click)="pause_video()"></i>
+
+            <i *ngIf="video_play" class="fas fa-video-slash" title="video play"
+            (click)="play_video()"></i>
+        </span>
+        <span class="vl"></span>
+        <span class="audio">
+          <i *ngIf="!audio_play"  class="fas fa-microphone"  title="audio play"
+          (click)="pause_audio()"></i>
+
+            <i *ngIf="audio_play"  class="fa fa-microphone-slash" aria-hidden="true" title="audio pause"
+            (click)="play_audio()"></i>
+        </span>
+        <span class="chat" (click)="chatOpen()">
+            <i class="fas fa-comment"></i>
+        </span>
+        </div>
+      </div>
+    </div>
+</div>
+

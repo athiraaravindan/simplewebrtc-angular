@@ -1,0 +1,70 @@
+#localVideo{
+    margin-top: 2%;
+    width: 400px;
+    border-radius: 25px;
+    transform: scaleX(1) !important;
+}
+.icon{
+    padding: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.panel-div{
+    text-align: center;
+
+}
+.forvideoicon{
+    padding: 8px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid #6273695e;;;
+    margin-left: 35%;
+    margin-right: 39%;
+    background-image: linear-gradient(to bottom right, #e4cea4 , #f5f5f591);
+}
+.video{
+    /* padding-right: 15%; */
+    font-size: 27px;
+    cursor: pointer;
+}
+.audio{
+    padding-left: 21%;
+    font-size: 27px;
+    cursor: pointer;
+}
+.chat{
+    padding-left: 21%;
+    font-size: 27px;
+    cursor: pointer;
+}
+.chatmsg{
+    border: 1px solid #32a2b8;
+    background-color: #eaeaea;
+    padding: 6%;
+    margin-top: 3%;
+    max-height: 300px;
+    overflow: auto;
+}
+.close{
+    float: right
+}
+.sender{
+    float: right;
+}
+.send{
+    color: #32a2b8;
+    font-size: 21px;
+    margin-left: -7%;
+}
+#text{
+    width: 100%;
+    padding: .375rem .75rem;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+.chat_head{
+    font-size: 22px;
+    color: #32a2b8;
+}

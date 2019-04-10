@@ -1,0 +1,98 @@
+<!-- <div class='fullscreenDiv'>
+<div class="center">
+<form [formGroup]='signupForm' (ngSubmit)="PostData(signupForm)">
+  <div class="form-container">
+    <div class="row columns">
+      <div>
+        <input type="text" formControlName='name' name='name' id='name' placeholder="Your First name">
+        <div class="error" *ngIf="signupForm.controls['name'].touched && !signupForm.controls['name'].valid">
+          <span *ngIf="signupForm.controls['name'].hasError('required') ">
+            First name is required
+          </span>
+          <span *ngIf="signupForm.controls['name'].hasError('minlength') ">
+            Min length is 1
+          </span>
+          <span *ngIf="signupForm.controls['name'].hasError('maxlength') ">
+            max length is 15
+          </span>
+        </div>
+      </div>
+      <div>
+        <br>
+        <input type="text" formControlName='room_name' placeholder="Your Room name">
+        <div class="error" *ngIf="signupForm.controls['room_name'].touched && !signupForm.controls['room_name'].valid">
+          <span *ngIf="signupForm.controls['room_name'].hasError('required') ">
+            Room name is required
+          </span>
+          <span *ngIf="signupForm.controls['room_name'].hasError('minlength') ">
+            Min length is 1
+          </span>
+          <span *ngIf="signupForm.controls['room_name'].hasError('maxlength') ">
+            max length is 15
+          </span>
+        </div>
+      </div>
+      <br>
+
+      <div class="buttonDiv">
+        <input type="Submit" value="start" [disabled]='!signupForm.valid'>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+</div> -->
+<div id="login">
+  <!-- <h3 class="text-center text-white pt-5">Login form</h3> -->
+  <div class="container">
+      <div id="login-row" class="row justify-content-center align-items-center">
+          <div id="login-column" class="col-md-6">
+              <div id="login-box" class="col-md-12">
+                  <form id="login-form" class="form" [formGroup]='signupForm' (ngSubmit)="PostData(signupForm)">
+                      <!-- <h3 class="text-center text-info">Login</h3> -->
+                      <div class="form-group">
+                          <label for="password" class="text-info">Name:</label><br>
+
+                          <input class="form-control" type="text"formControlName='name' name='name' id="username">
+
+                          <!-- <input type="text" formControlName='name' name='name' id="username" placeholder="Your First name"> -->
+                          <div class="error" *ngIf="signupForm.controls['name'].touched && !signupForm.controls['name'].valid">
+                            <span *ngIf="signupForm.controls['name'].hasError('required') ">
+                              First name is required
+                            </span>
+                            <span *ngIf="signupForm.controls['name'].hasError('minlength') ">
+                              Min length is 1
+                            </span>
+                            <span *ngIf="signupForm.controls['name'].hasError('maxlength') ">
+                              max length is 15
+                            </span>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="password" class="text-info">Room name:</label><br>
+                          <input type="text" formControlName='room_name'
+                          id="password" class="form-control">
+                          <div class="error" *ngIf="signupForm.controls['room_name'].touched && !signupForm.controls['room_name'].valid">
+                            <span *ngIf="signupForm.controls['room_name'].hasError('required') ">
+                              Room name is required
+                            </span>
+                            <span *ngIf="signupForm.controls['room_name'].hasError('minlength') ">
+                              Min length is 1
+                            </span>
+                            <span *ngIf="signupForm.controls['room_name'].hasError('maxlength') ">
+                              max length is 15
+                            </span>
+                          </div>
+                          <!-- <input type="text" name="password" id="password" class="form-control"> -->
+                      </div>
+                      <div class="form-group">
+                        <!-- <input type="Submit" value="start" [disabled]='!signupForm.valid'> -->
+                          <input type="submit" name="submit"
+                           class="btn btn-info btn-md" value="Start" [disabled]='!signupForm.valid'>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
