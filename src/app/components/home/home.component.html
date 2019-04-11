@@ -1,30 +1,28 @@
 <div class="container">
   <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <video id="localVideo"></video>
         </div>
-        <div class="col-md-6">
-          <div class="chatmsg" id="chatopen">
+        <div class="col-sm-6">
+          <!-- <div class="chatmsg" id="chatopen">
             <span class="chat_head">Chat</span>
             <span class="close">
               <i class="fa fa-times" aria-hidden="true" (click)="chatClose()"></i>
             </span> 
             <div id="messages">
-            <!-- <ul>
-              <li *ngFor="let message of messages">
-                {{message}}
+            <ul class="chat_ul">
+              <li *ngFor="let chat of messages" class="chat_li">
+                <div class="you" *ngIf="chat.name =='you'">you:{{chat.message}}</div>
+                <div class="another"  *ngIf="chat.name !='you'">{{chat.name}}:{{chat.message}}</div>
               </li>
-            </ul> -->
+            </ul>
             </div>
-            <input type="text" id="text">
+            <input type="text" id="text" autofocus>
             <span class="send" (click)="sendMsg()">
               <i class="fa fa-paper-plane" aria-hidden="true"></i>
             </span>
-            <!-- <button (click)="sendMsg()" class="send">send</button> -->
-          </div>
-          <!-- <app-chat  *ngIf="loadChild"></app-chat> -->
-          <!-- <p>second col</p> -->
-          <!-- <div id="remoteVideos"></div> -->
+          </div> -->
+          <app-chat *ngIf="loadChild" [messages]="messages" (send)="sendMsg($event)"></app-chat>
       </div>
   </div>
   <!-- <div class="row"> -->
@@ -49,8 +47,11 @@
             <i *ngIf="audio_play"  class="fa fa-microphone-slash" aria-hidden="true" title="audio pause"
             (click)="play_audio()"></i>
         </span>
-        <span class="chat" (click)="chatOpen()">
+        <span class="chat" (click)="chatOpen()" *ngIf="!loadChild">
             <i class="fas fa-comment"></i>
+        </span>
+        <span class="chat" (click)="chatClose()" *ngIf="loadChild">
+            <i class="fas fa-comments"></i>
         </span>
         </div>
       </div>

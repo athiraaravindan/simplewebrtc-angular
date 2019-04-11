@@ -13,10 +13,14 @@ body {
   }
   #login .container #login-row #login-column #login-box #login-form {
     padding: 20px;
+    padding-bottom: 47px;
   }
   #login .container #login-row #login-column #login-box #login-form #register-link {
     margin-top: -85px;
   }
   .error{
       color: rgba(172, 13, 13, 0.897)
+  }
+  .btn-info{
+    float: right;
   }

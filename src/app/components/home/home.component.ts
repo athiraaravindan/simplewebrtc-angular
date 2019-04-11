@@ -1,4 +1,6 @@
 declare var SimpleWebRTC
+// var messages:any = [];
+var self:any;
 import { Component, OnInit } from '@angular/core';
 import { Routes, RouterModule,ActivatedRoute, Router  } from '@angular/router';
 import * as $ from 'jquery';
@@ -9,6 +11,7 @@ import * as $ from 'jquery';
 })
 
 export class HomeComponent implements OnInit {
+  public messages:any = [];
   roomID:any;
   webrtc:any;
   user_name:any;
@@ -16,11 +19,12 @@ export class HomeComponent implements OnInit {
   audio_play:boolean = false;
   loadChild:boolean = false;
   msg:any;
-  messages:any = [];
-  messagesrecive:any = [];
   constructor(
     private route:ActivatedRoute,
-  ) { }
+  ) {
+  self = this;
+
+   }
 
   ngOnInit() {
     $("#chatopen").hide();
@@ -39,7 +43,7 @@ export class HomeComponent implements OnInit {
       debug: true,
       audio:true,
       video:true,
-      url:"https://localhost:9443",
+      url:"https://one2one.enfinlabs.com:9443",
       // socketio: this.socket,
       peerConnetionConfig:{
         iceTransports: 'relay'
@@ -50,18 +54,18 @@ export class HomeComponent implements OnInit {
       if(room){
        webrtc.joinRoom(room);
         // this.messages.push('helooo')
-       webrtc.connection.on('message',(data)=>{
-        if(data.type === 'chat'){
-          console.log('chat received',data);
-          let mg = data.payload.message
-          console.log(mg)
-          $("#chatopen").show();
-          this.loadChild = true;
+      //  webrtc.connection.on('message',(data)=>{
+        // if(data.type === 'chat'){
+          // console.log('chat received',data);
+          // let mg = data.payload.message
+          // console.log(mg)
+          // $("#chatopen").show();
+          // this.loadChild = true;
             // this.messages.push(mg)
-              $('#messages').append('<p class="sender">' + data.payload.nick + ':' + data.payload.message+'</p>');
+              // $('#messages').append('<p style="color:yellow">' + data.payload.nick + ':' + data.payload.message+'</p>');
               // $('p').css('float:right')
-            }
-        });
+            // }
+        // });
       }
     });
     webrtc.on('videoAdded',  (video, peer)=> {
@@ -87,6 +91,30 @@ export class HomeComponent implements OnInit {
         remotes.removeChild(el);
         }
       });
+      webrtc.on('channelMessage', function(peer, label, data) {
+  
+        if (label == "chat") {
+          $("#chatopen").show();
+            var res = JSON.parse(data.payload.data);
+            var method = res.method
+            if(method == 'chat'){
+              console.log(data.payload.data)
+              console.log(res.name)
+              console.log(res.message)
+              self.messages.push({name:res.name,message:res.message})
+            }
+            // if(method == 'enable_video'){
+            //     let el1:any = document.getElementsByClassName(res.token)[0];
+            //     el1.style.display = 'block';
+            // }
+            // if(method == 'disable_video'){
+            //   let el2:any = document.getElementsByClassName(res.token)[0];
+            //   el2.style.display = 'none';
+              
+            // }
+            
+        } 
+    });
   
   }
   pause_video(){
@@ -113,17 +141,36 @@ export class HomeComponent implements OnInit {
     this.loadChild = true
   }
   chatClose(){
-    $("#chatopen").hide();
+    // $("#chatopen").hide();
 
     console.log('chat close')
     this.loadChild = false;
   }
-  sendMsg(){
-    window.scrollTo(0,document.body.scrollHeight);
-    this.msg = $('#text').val();
-    this.webrtc.sendToAll('chat', {message: this.msg, nick: this.webrtc.config.nick});
-    // this.messages.push(this.msg)
-    $('#messages').append('<p>'+'you:'+this.msg+'</p>');
-    $('#text').val('');
+  // sendToAll(data) {
+  //   console.log(data)
+  //   this.webrtc.sendDirectlyToAll('chat', 'message', {data: data});
+  // }
+  // sendMsg(){
+  //   this.msg = $('#text').val();
+  //   if(this.msg.trim() == ''){
+  //     console.log('empty msg')
+  //   } else{
+
+  //     this.messages.push({name:"you",message:this.msg})
+  //     console.log(this.messages)
+  //     let chat_data:any = {};
+  //       chat_data.method  = 'chat';
+  //       chat_data.name    = this.user_name;
+  //       chat_data.message = this.msg;
+  //       self.sendToAll(JSON.stringify(chat_data));
+  //     $('#text').val('');
+  //   }
+  // }
+  sendMsg(datas){
+    let chat_data:any = {};
+    chat_data.method  = 'chat';
+    chat_data.name    = this.user_name;
+    chat_data.message = datas;
+    console.log((JSON.stringify(chat_data)))
   }
 }

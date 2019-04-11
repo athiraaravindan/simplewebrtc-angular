@@ -39,11 +39,11 @@
     font-size: 27px;
     cursor: pointer;
 }
-.chatmsg{
+/* .chatmsg{
     border: 1px solid #32a2b8;
     background-color: #eaeaea;
     padding: 6%;
-    margin-top: 3%;
+    margin: 2%;
     max-height: 300px;
     overflow: auto;
 }
@@ -68,3 +68,26 @@
     font-size: 22px;
     color: #32a2b8;
 }
+
+.chat_ul{
+    list-style-type: none;
+}
+
+.you{
+    border: 1px solid #d2d0b1;
+    width: 27%;
+    padding: 7px;
+    border-radius: 7px;
+    background-color: #d2d0b1;
+    float: right;
+}
+.chat_li{
+    margin-left: -11%;
+}
+.another{
+    border: 1px solid #a0d1d3;
+    width: 27%;
+    padding: 7px;
+    border-radius: 7px;
+    background-color: #a0d1d3;
+} */
