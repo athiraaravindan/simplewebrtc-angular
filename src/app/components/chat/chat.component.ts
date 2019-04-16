@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Routes, RouterModule,ActivatedRoute, Router  } from '@angular/router';
-
 import * as $ from 'jquery';
 
 
@@ -11,13 +10,17 @@ import * as $ from 'jquery';
 })
 export class ChatComponent implements OnInit {
   @Input() messages:any=[];
-  @Output() send = new EventEmitter()
+  @Output() send = new EventEmitter();
+  @Output() close_chat = new EventEmitter();
   msg:any;
   roomID:any;
   user_name:any;
+  intervel:any;
+  elem:any;
+  notification:any;
 
   constructor(
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -27,16 +30,16 @@ export class ChatComponent implements OnInit {
     });
   }
   sendMsg(){
+    $(".chat_ul").animate({ scrollTop: $('.chat_ul')[0].scrollHeight}, 1000);
     this.msg = $('#text').val();
     if(this.msg.trim() == ''){
       console.log('empty msg')
     } else{
-        // let chat_data:any = {};
-        // chat_data.method  = 'chat';
-        // chat_data.name    = this.user_name;
-        // chat_data.message = this.msg;
         this.send.emit(this.msg)
         $("#text").val('');
     }
+  }
+  chatClose(){
+    this.close_chat.emit()
   }
 }

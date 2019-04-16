@@ -26,7 +26,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/simplewebrtc-with-adapter.bundle.js",
+              "src/assets/js/adapter-latest.js",
+              "src/assets/js/simplewebrtc.bundle.js",
               "node_modules/jquery/dist/jquery.js"
             ],
             "es5BrowserSupport": true

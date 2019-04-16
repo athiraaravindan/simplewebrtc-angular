@@ -4,25 +4,8 @@
           <video id="localVideo"></video>
         </div>
         <div class="col-sm-6">
-          <!-- <div class="chatmsg" id="chatopen">
-            <span class="chat_head">Chat</span>
-            <span class="close">
-              <i class="fa fa-times" aria-hidden="true" (click)="chatClose()"></i>
-            </span> 
-            <div id="messages">
-            <ul class="chat_ul">
-              <li *ngFor="let chat of messages" class="chat_li">
-                <div class="you" *ngIf="chat.name =='you'">you:{{chat.message}}</div>
-                <div class="another"  *ngIf="chat.name !='you'">{{chat.name}}:{{chat.message}}</div>
-              </li>
-            </ul>
-            </div>
-            <input type="text" id="text" autofocus>
-            <span class="send" (click)="sendMsg()">
-              <i class="fa fa-paper-plane" aria-hidden="true"></i>
-            </span>
-          </div> -->
-          <app-chat *ngIf="loadChild" [messages]="messages" (send)="sendMsg($event)"></app-chat>
+
+          <app-chat *ngIf="loadChild" (close_chat)="close_Chatpage()" [messages]="messages" (send)="sendMsg($event)"></app-chat>
       </div>
   </div>
   <!-- <div class="row"> -->
@@ -49,6 +32,9 @@
         </span>
         <span class="chat" (click)="chatOpen()" *ngIf="!loadChild">
             <i class="fas fa-comment"></i>
+            <span class="notification">
+                {{no_msg}}
+            </span>
         </span>
         <span class="chat" (click)="chatClose()" *ngIf="loadChild">
             <i class="fas fa-comments"></i>
