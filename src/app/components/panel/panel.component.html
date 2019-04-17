@@ -1,0 +1,29 @@
+
+<div class="row button_row" id="pannel_row">
+  <div class="col-sm-12">
+    <div class="forvideoicon">
+      <span class="video">
+          <i *ngIf="!video_play"  class="fas fa-video" title="video pause"
+          (click)="pause_video()"></i>
+
+          <i *ngIf="video_play" class="fas fa-video-slash" title="video play"
+          (click)="play_video()"></i>
+      </span>
+      <span class="vl"></span>
+      <span class="audio">
+        <i *ngIf="!audio_play"  class="fas fa-microphone"  title="audio play"
+        (click)="pause_audio()"></i>
+
+          <i *ngIf="audio_play"  class="fa fa-microphone-slash" aria-hidden="true" title="audio pause"
+          (click)="play_audio()"></i>
+      </span>
+      <span class="chat" (click)="chatOpen()" *ngIf="!loadChild">
+          <i class="fas fa-comment"></i>
+          <i *ngIf="noti" class="fas fa-bell noti"></i>
+      </span>
+      <span class="chat" (click)="chatClose()" *ngIf="loadChild">
+          <i class="fas fa-comments"></i>
+      </span>
+      </div>
+    </div>
+  </div>

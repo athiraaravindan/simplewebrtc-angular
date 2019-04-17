@@ -53,7 +53,7 @@
                       <div class="form-group">
                           <label for="password" class="text-info">Name:</label><br>
 
-                          <input class="form-control" type="text"formControlName='name' name='name' id="username">
+                          <input class="form-control" type="text"formControlName='name' name='name' id="username" autofocus>
 
                           <!-- <input type="text" formControlName='name' name='name' id="username" placeholder="Your First name"> -->
                           <div class="error" *ngIf="signupForm.controls['name'].touched && !signupForm.controls['name'].valid">

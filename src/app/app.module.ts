@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ChatComponent } from './components/chat/chat.component';
     LandingComponent,
     HomeComponent,
     ChatComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,

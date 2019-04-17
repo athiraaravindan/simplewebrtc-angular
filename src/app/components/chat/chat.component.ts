@@ -11,7 +11,7 @@ import * as $ from 'jquery';
 export class ChatComponent implements OnInit {
   @Input() messages:any=[];
   @Output() send = new EventEmitter();
-  @Output() close_chat = new EventEmitter();
+  @Output() closechat = new EventEmitter();
   msg:any;
   roomID:any;
   user_name:any;
@@ -40,6 +40,6 @@ export class ChatComponent implements OnInit {
     }
   }
   chatClose(){
-    this.close_chat.emit()
+    this.closechat.emit()
   }
 }
